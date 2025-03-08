@@ -4,8 +4,6 @@ import random
 from faker import Faker
 from pyfiglet import Figlet
 from termcolor import colored
-import tkinter as tk
-from tkinter import filedialog
 
 # Set up folder paths in Documents/Python
 base_folder = os.path.join(os.path.expanduser("~"), "Documents", "Python")
@@ -141,15 +139,12 @@ def hide_ip():
     print(colored("[✓] IP hidden successfully!", "cyan"))
 
 def upload_to_onionshare():
-    # Open a file picker to select a folder under the base folder
-    root = tk.Tk()
-    root.withdraw()  # Hide the main Tkinter window
-    folder = filedialog.askdirectory(initialdir=base_folder, title="Select a folder to upload to OnionShare")
-    if folder:
+    folder = input(colored("Enter the folder path to upload to OnionShare: ", "green")).strip()
+    if os.path.isdir(folder):
         fake_loading("Uploading to OnionShare")
         print(colored(f"[+] Folder '{folder}' uploaded to OnionShare (simulated).", "cyan"))
     else:
-        print(colored("[!] No folder selected.", "red"))
+        print(colored("[!] No folder selected or folder doesn't exist.", "red"))
     input("Press Enter to continue...")
 
 def main_menu():
@@ -160,7 +155,6 @@ def main_menu():
     while True:
         clear_screen()
         elite_font = Figlet(font='bloody')
-        # Changed title from "PYTHON HACK" to "PYTHON"
         print(colored(elite_font.renderText("PYTHON"), "green"))
         print(colored("\n[1] DDoS Attack", "green"))
         print(colored("[2] Leak Admin Credentials", "green"))
@@ -183,7 +177,7 @@ def main_menu():
         elif choice == "3":
             fake_loading("Hacking Pentagon Database")
             generate_pentagon_docs()
-        elif choice == "4":
+        elif cahoice == "4":
             upload_to_onionshare()
         elif choice == "5":
             print(colored("Exiting...", "red"))
