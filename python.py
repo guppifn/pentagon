@@ -177,7 +177,7 @@ def main_menu():
         elif choice == "3":
             fake_loading("Hacking Pentagon Database")
             generate_pentagon_docs()
-        elif cahoice == "4":
+        elif choice == "4":
             upload_to_onionshare()
         elif choice == "5":
             print(colored("Exiting...", "red"))
